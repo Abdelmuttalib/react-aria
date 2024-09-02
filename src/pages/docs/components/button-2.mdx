@@ -1,0 +1,144 @@
+import React from "react";
+import { DocsLayout } from "@/layout";
+import { CodeBlock } from "@/components/code";
+import { Checkbox, CheckboxGroup } from "@/components/ui/checkbox";
+import { Switch } from "@/components/ui/switch";
+import { DialogTrigger } from "@/components/ui/dialog";
+import { Modal } from "@/components/ui/modal";
+import { AlertDialog } from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button-1";
+
+<DocsLayout>
+
+# Button Component
+
+<Switch>Wi-Fi</Switch>
+
+<DialogTrigger>
+  <Button variant="secondary">Delete…</Button>
+  <Modal>
+    <AlertDialog
+      {...{
+        title: "Delete folder",
+        children:
+          'Are you sure you want to delete "Documents"? All contents will be permanently destroyed.',
+        variant: "destructive",
+        actionLabel: "Delete",
+      }}
+    />
+  </Modal>
+</DialogTrigger>
+
+<Checkbox className="bg-red-200" isDisabled={true} />
+<Checkbox />
+<Checkbox isDisabled={true} />
+<CheckboxGroup
+  description="Lorem fdsf"
+  label="Cities"
+  onBlur={() => {}}
+  onChange={() => {}}
+  onFocus={() => {}}
+  onFocusChange={() => {}}
+>
+  <React.Fragment key=".0">
+    <Checkbox value="sf">San Francisco</Checkbox>
+    <Checkbox value="ny">New York</Checkbox>
+    <Checkbox value="sydney">Sydney</Checkbox>
+    <Checkbox value="london">London</Checkbox>
+    <Checkbox value="tokyo">Tokyo</Checkbox>
+  </React.Fragment>
+</CheckboxGroup>
+
+The Button component is a versatile and customizable button that can be used throughout your application. It supports various styles, sizes, and states to fit different use cases.
+
+## Usage Examples
+
+Here are some examples of how to use the Button component:
+
+### Default Button
+
+A basic button with default styling:
+
+<CodeBlock code={`<Button>Click me</Button>`}></CodeBlock>
+
+### Variant Styles
+
+Buttons with different visual styles:
+
+```tsx
+<Button variant="default">Default</Button>
+<Button variant="destructive">Destructive</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Link</Button>
+```
+
+### Sizes
+
+Buttons in different sizes:
+
+```tsx
+<Button size="default">Default Size</Button>
+<Button size="sm">Small</Button>
+<Button size="lg">Large</Button>
+<Button size="icon"><IconComponent /></Button>
+```
+
+### Disabled State
+
+A disabled button:
+
+```tsx
+<Button disabled>Disabled</Button>
+```
+
+### With Icon
+
+A button with an icon:
+
+```tsx
+<Button>
+  <IconComponent className="mr-2 h-4 w-4" /> With Icon
+</Button>
+```
+
+<CodeBlock
+  code={`tsx
+<Button>
+  <IconComponent className="mr-2 h-4 w-4" /> With Icon
+</Button>
+`}
+></CodeBlock>
+
+## Accessibility Considerations
+
+- The Button component uses the native `<button>` element, ensuring proper keyboard navigation and screen reader support.
+- When using icons, make sure to provide appropriate aria labels for screen readers.
+- The disabled state is properly conveyed to assistive technologies.
+
+## API Reference
+
+```typescript
+import { Button } from "@/components/ui/button";
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?:
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link";
+  size?: "default" | "sm" | "lg" | "icon";
+  asChild?: boolean;
+}
+
+const Button: React.FC<ButtonProps>;
+
+export { Button };
+```
+
+For more detailed information on usage and customization, refer to the source code and comments within the component file.
+
+</DocsLayout>
