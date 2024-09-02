@@ -4,115 +4,8 @@ import { Tab, TabList, TabPanel, Tabs } from "@/components/ui/tabs";
 import { Typography } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 import { ClassValue } from "clsx";
-import { Inter } from "next/font/google";
 import Head from "next/head";
 import { ReactNode } from "react";
-
-import { AlertDialogDemo } from "@/registry/default/demo/alert-dialog";
-import { BreadcrumbsDemo } from "@/registry/default/demo/breadcrumbs";
-import { CalendarDemo } from "@/registry/default/demo/calendar";
-import { CheckboxDemo } from "@/registry/default/demo/checkbox";
-import {
-  CheckboxGroupDemo,
-  CheckboxGroupValidationDemo,
-} from "@/registry/default/demo/checkbox-group";
-import {
-  ComboBoxDemo,
-  ComboBoxDisabledItemsDemo,
-  ComboBoxSectionsDemo,
-  ComboBoxValidationDemo,
-} from "@/registry/default/demo/combobox";
-import {
-  DateFieldDemo,
-  DateFieldValidationDemo,
-} from "@/registry/default/demo/date-field";
-import {
-  DatePickerDemo,
-  DatePickerValidationDemo,
-} from "@/registry/default/demo/date-picker";
-import {
-  DateRangePickerDemo,
-  DateRangePickerValidationDemo,
-} from "@/registry/default/demo/date-range-picker";
-import { FormDemo } from "@/registry/default/demo/form";
-import {
-  GridListDemo,
-  GridListDisabledItemsDemo,
-} from "@/registry/default/demo/grid-list";
-import { LinkDemo } from "@/registry/default/demo/link";
-import {
-  ListBoxDemo,
-  ListBoxDisabledItemsDemo,
-} from "@/registry/default/demo/list-box";
-import {
-  MenuDemo,
-  MenuDisabledItemsDemo,
-  MenuSectionsDemo,
-  MenuSubmenuDemo,
-} from "@/registry/default/demo/menu";
-import { MeterDemo } from "@/registry/default/demo/meter";
-import {
-  NumberFieldDemo,
-  NumberFieldValidationDemo,
-} from "@/registry/default/demo/number-field";
-import { PopoverDemo } from "@/registry/default/demo/popover";
-import { ProgressBarDemo } from "@/registry/default/demo/progress-bar";
-import {
-  RadioGroupDemo,
-  RadioGroupValidationDemo,
-} from "@/registry/default/demo/radio-group";
-import { RangeCalendarDemo } from "@/registry/default/demo/range-calendar";
-import {
-  SearchFieldDemo,
-  SearchFieldValidationDemo,
-} from "@/registry/default/demo/search-field";
-import {
-  SelectDemo,
-  SelectDisabledItemsDemo,
-  SelectSectionsDemo,
-  SelectValidationDemo,
-} from "@/registry/default/demo/select";
-import { SliderDemo } from "@/registry/default/demo/slider";
-import { SwitchDemo } from "@/registry/default/demo/switch";
-import { TableDemo } from "@/registry/default/demo/table";
-import { TabsDemo } from "@/registry/default/demo/tabs";
-import { TagGroupDemo } from "@/registry/default/demo/tag-group";
-import {
-  TextFieldDemo,
-  TextFieldValidationDemo,
-} from "@/registry/default/demo/text-field";
-import {
-  TimeFieldDemo,
-  TimeFieldValidationDemo,
-} from "@/registry/default/demo/time-field";
-import { ToggleButtonDemo } from "@/registry/default/demo/toggle-button";
-import { ToolbarDemo, ToolbarDemo2 } from "@/registry/default/demo/toolbar";
-
-const inter = Inter({ subsets: ["latin"] });
-
-// export default function Home() {
-//   return (
-//     <main
-//       className={`relative flex h-full min-h-screen flex-col items-center justify-center p-24 ${inter.className}`}
-//     >
-//       <div className="fixed -z-10">
-//         <div className="relative">
-//           <GradientBackground />
-//         </div>
-//       </div>
-//       <div className="grid grid-cols-1 lg:grid-cols-2 w-full h-full bg-red-300">
-//         <div>
-//           <h1 className="text-4xl lg:text-6xl font-bold">React Aria UI</h1>
-//           <p className="text-lg lg:text-xl">A modern React Aria UI library</p>
-//         </div>
-//         <div>
-//           <Button>Button</Button>
-//           <CheckboxDemo />
-//         </div>
-//       </div>
-//     </main>
-//   );
-// }
 
 export default function Home() {
   return (
@@ -280,80 +173,80 @@ export function Hero() {
   );
 }
 
-function ComponentsPreview() {
-  return (
-    <div className="space-y-7">
-      <BreadcrumbsDemo />
+// function ComponentsPreview() {
+//   return (
+//     <div className="space-y-7">
+//       <BreadcrumbsDemo />
 
-      <AlertDialogDemo />
-      {/* breadcrumbs */}
-      {/* checkbox */}
-      <div className="space-7 flex gap-x-4 w-full">
-        <CheckboxGroupDemo />
-        <ListBoxDisabledItemsDemo />
-      </div>
-      <div className="space-7 flex gap-x-4">
-        <ComboBoxDemo />
-        <ComboBoxDisabledItemsDemo />
-        <ComboBoxSectionsDemo />
-      </div>
-      <div className="space-7 flex gap-x-4">
-        {/* date field */}
-        <DateFieldDemo />
-        {/* date picker */}
-        <DatePickerDemo />
-        {/* date range picker */}
-        <DateRangePickerDemo />
-      </div>
-      {/* form */}
+//       <AlertDialogDemo />
+//       {/* breadcrumbs */}
+//       {/* checkbox */}
+//       <div className="space-7 flex gap-x-4 w-full">
+//         <CheckboxGroupDemo />
+//         <ListBoxDisabledItemsDemo />
+//       </div>
+//       <div className="space-7 flex gap-x-4">
+//         <ComboBoxDemo />
+//         <ComboBoxDisabledItemsDemo />
+//         <ComboBoxSectionsDemo />
+//       </div>
+//       <div className="space-7 flex gap-x-4">
+//         {/* date field */}
+//         <DateFieldDemo />
+//         {/* date picker */}
+//         <DatePickerDemo />
+//         {/* date range picker */}
+//         <DateRangePickerDemo />
+//       </div>
+//       {/* form */}
 
-      {/* link */}
-      <LinkDemo />
-      {/* menu */}
-      <div className="space-7">
-        <MenuSubmenuDemo />
-      </div>
-      {/* meter */}
-      <MeterDemo />
-      {/* number field */}
-      <NumberFieldDemo />
-      {/* popover */}
-      <PopoverDemo />
-      {/* progress bar */}
-      <ProgressBarDemo />
-      {/* radio group */}
-      <RadioGroupDemo />
-      {/* range calendar */}
-      <RangeCalendarDemo />
-      {/* search field */}
-      <SearchFieldDemo />
-      {/* search field */}
-      <SearchFieldDemo />
-      {/* select */}
-      <SelectDemo />
-      <SelectDisabledItemsDemo />
-      <SelectSectionsDemo />
-      {/* slider */}
-      <SliderDemo />
-      {/* switch */}
-      <SwitchDemo />
-      {/* table */}
-      <TableDemo />
-      {/* tabs */}
-      <TabsDemo />
-      {/* tag group */}
-      <TagGroupDemo />
-      {/* text field */}
-      <TextFieldDemo />
-      {/* time field */}
-      <TimeFieldDemo />
-      {/* toggle button */}
-      <ToggleButtonDemo />
-      {/* toolbar */}
-      <ToolbarDemo2 orientation="horizontal" />
-    </div>
-  );
-}
+//       {/* link */}
+//       <LinkDemo />
+//       {/* menu */}
+//       <div className="space-7">
+//         <MenuSubmenuDemo />
+//       </div>
+//       {/* meter */}
+//       <MeterDemo />
+//       {/* number field */}
+//       <NumberFieldDemo />
+//       {/* popover */}
+//       <PopoverDemo />
+//       {/* progress bar */}
+//       <ProgressBarDemo />
+//       {/* radio group */}
+//       <RadioGroupDemo />
+//       {/* range calendar */}
+//       <RangeCalendarDemo />
+//       {/* search field */}
+//       <SearchFieldDemo />
+//       {/* search field */}
+//       <SearchFieldDemo />
+//       {/* select */}
+//       <SelectDemo />
+//       <SelectDisabledItemsDemo />
+//       <SelectSectionsDemo />
+//       {/* slider */}
+//       <SliderDemo />
+//       {/* switch */}
+//       <SwitchDemo />
+//       {/* table */}
+//       <TableDemo />
+//       {/* tabs */}
+//       <TabsDemo />
+//       {/* tag group */}
+//       <TagGroupDemo />
+//       {/* text field */}
+//       <TextFieldDemo />
+//       {/* time field */}
+//       <TimeFieldDemo />
+//       {/* toggle button */}
+//       <ToggleButtonDemo />
+//       {/* toolbar */}
+//       <ToolbarDemo2 orientation="horizontal" />
+//     </div>
+//   );
+// }
 
 export function TabsExample() {
   return (
