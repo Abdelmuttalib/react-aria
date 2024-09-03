@@ -1,11 +1,13 @@
 import ThemeSwitcher, { ThemeColorSelect2 } from "@/components/theme";
+import { Button } from "@/components/ui/button";
 import { GradientBackground } from "@/components/ui/gradient";
+import { Input } from "@/components/ui/input-1";
 import { Tab, TabList, TabPanel, Tabs } from "@/components/ui/tabs";
 import { Typography } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 import { ClassValue } from "clsx";
 import Head from "next/head";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
 export default function Home() {
   return (
@@ -94,7 +96,52 @@ function CheckBadgeIcon({ className }: { className?: ClassValue }) {
   );
 }
 
+import { useForm, SubmitHandler } from "react-hook-form";
+
+import { z } from "zod";
+
+const waitlistFormSchema = z.object({
+  email: z.string().email(),
+});
+
+type FormSchema = z.infer<typeof waitlistFormSchema>;
+
 export function Hero() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [message, setMessage] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  async function onSubmit(formData: FormSchema) {
+    setIsSubmitting(true);
+    setMessage("");
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage("Thanks for subscribing!");
+        setSuccess(true);
+        reset();
+      } else {
+        setMessage(data.error || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setMessage("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  const { register, handleSubmit, reset } = useForm();
+
   return (
     <div className="relative flex flex-col items-center justify-center h-[100svh] overflow-x-hidden">
       <Container className="relative isolate">
@@ -147,6 +194,47 @@ export function Hero() {
                       </a>{" "}
                       components
                     </Typography>
+                  </div>
+
+                  <div>
+                    {!success ? (
+                      <form
+                        // @ts-ignore
+                        onSubmit={handleSubmit(onSubmit)}
+                        className="flex flex-col gap-y-4"
+                      >
+                        <div>
+                          <Input
+                            type="email"
+                            placeholder="Enter your email"
+                            {...register("email", {
+                              required: true,
+                            })}
+                            disabled={isSubmitting}
+                          />
+                        </div>
+                        <Button
+                          type="submit"
+                          isLoading={isSubmitting}
+                          isDisabled={isSubmitting || success}
+                        >
+                          Join waitlist
+                        </Button>
+                      </form>
+                    ) : (
+                      <div>
+                        <p className="text-foreground-light text-sm">
+                          {message}
+                        </p>
+                      </div>
+                    )}
+                    {!success && message && (
+                      <div className="mt-2">
+                        <p className="text-foreground-light text-sm">
+                          {message}
+                        </p>
+                      </div>
+                    )}
                   </div>
 
                   <span className="dark:opacity-70 inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
